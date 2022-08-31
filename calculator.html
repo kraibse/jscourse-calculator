@@ -21,7 +21,7 @@
         <!-- results history -->
         <div class="border mb-4">
             <div class="w-100 shadow-sm" id="results"></div>
-            <input type="text" id="equation" class="w-100 px-2 py-1 shadow-sm" placeholder="42">
+            <input type="text" id="equation" class="w-100 px-2 py-1 shadow-sm" onInput="checkSyntax();" placeholder="42">
         </div>
 
         <!-- container for the buttons (table style) -->
@@ -55,6 +55,16 @@
             </div>
         </div>
     </form>
+
+    <div class="my-3" align="center" id="errorBox">
+        <p class="">Die Eingabe enthält Fehler bei Position: <strong id="errorIndex">0</strong></p>
+        <ul class="text-danger">
+            <!-- Ungültige Zeichen -->
+            <li class="text-danger">Ungültige Zeichen!</li>
+            <!-- Ungültige Operatorenkette -->
+            <li class="text-danger">Ungültige Operatorenketten!</li>
+        </ul>
+    </div>
 
 
     <!-- JavaScript Bundle with Popper -->
