@@ -1,11 +1,13 @@
 //Berechnet eine Rechenaufgabe im Format [a, 'Operator', b]
 function calculate (splitTerm) {
+    
+    console.log(splitTerm);
 
     switch (splitTerm[1]){
 
         case '+':
             return add(splitTerm[0], splitTerm[2]);
-        
+            
         case '-':
             return substract(splitTerm[0], splitTerm[2]);
 
@@ -73,5 +75,5 @@ function splitTerm(str){
 }
 
 //testing
-let str = '-3--3';
-console.log(splitTerm(str));
+let str = '-4--3';
+console.log(calculate(splitTerm(str)));
