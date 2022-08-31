@@ -14,8 +14,8 @@ function splitTerm(str){
             newArr.push(0-arr[1]);
             i++;
         }
-        else if((i > 0 && arr[i-1] === '-' && arr[i] === '-')){
-            newArr.push('+'+Math.abs(arr[i+1]));
+        else if((i > 0 && (arr[i+1] === '-') && (arr[i] === '-'))){
+            newArr.push('+');
             i++;
         }
         else if(i > 0 && arr[i-1].indexOf(validOp) && arr[i] === '-'){
@@ -31,5 +31,5 @@ function splitTerm(str){
 }
 
 //testing
-let str = '-3+-3';
+let str = '-3--3';
 console.log(splitTerm(str));
