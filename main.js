@@ -31,4 +31,3 @@ function splitTerm(str){
 
 //testing
 let str = '-3*-5+21+-324/275';
-console.log(splitTerm(str));
