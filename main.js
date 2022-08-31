@@ -1,3 +1,4 @@
+
 // String wird rechenbar gemacht
 function splitTerm(str){
 
@@ -14,7 +15,7 @@ function splitTerm(str){
             i++;
         }
         else if((i > 0 && arr[i-1] === '-' && arr[i] === '-')){
-            newArr.push(Math.abs(arr[i+1]));
+            newArr.push('+'+Math.abs(arr[i+1]));
             i++;
         }
         else if(i > 0 && arr[i-1].indexOf(validOp) && arr[i] === '-'){
@@ -30,4 +31,5 @@ function splitTerm(str){
 }
 
 //testing
-let str = '-3*-5+21+-324/275';
+let str = '-3+-3';
+console.log(splitTerm(str));
