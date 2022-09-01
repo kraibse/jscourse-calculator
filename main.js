@@ -110,8 +110,11 @@ function subm(){
     let inputField = document.getElementById('equation');
     let history = document.getElementById('results');
     let textStr = inputField.value;
+
+    //hier wird gerechnet
     let result = calculate(splitTerm(textStr));
     console.log(result);
+    
     inputField.value = result;
     history.appendChild(document.createElement('p')).textContent = textStr + ' = ' +result;
     history.scrollTop = history.scrollHeight;
