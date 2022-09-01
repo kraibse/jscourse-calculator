@@ -109,10 +109,13 @@ function splitTerm(str){
 function subm(){
     event.preventDefault();
     let inputField = document.getElementById('equation');
+    let history = document.getElementById('results');
     let textStr = inputField.value;
     let result = calculate(splitTerm(textStr));
     console.log(result);
     inputField.value = result;
+    history.appendChild(document.createElement('p')).textContent = result;
+    history.scrollTop = history.scrollHeight;
 }
 
 

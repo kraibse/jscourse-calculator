@@ -25,6 +25,10 @@
 #results {
     height: 120px;
     background-color: #93aee861;
+    text-align: end;
+    padding: 8px;
+    line-height: 8px;
+    overflow-y: scroll;
 }
 
 input[type=text] {
