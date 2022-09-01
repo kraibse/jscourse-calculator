@@ -29,6 +29,7 @@
     padding: 8px;
     line-height: 8px;
     overflow-y: scroll;
+    color: rgb(89, 89, 89);
 }
 
 input[type=text] {
