@@ -68,21 +68,30 @@ function splitTerm(str){
     let newArr = [];
 
     for(let i = 0; i < arr.length; i++){
+        //erstes Element negativ
         if((i === 0) && (arr[i] === '-')){
             newArr.push(0-arr[1]);
             i++;
         }
+        //negativ nach Klammer
+        else if( arr[i] === '(' && arr[i+1] === '-'){
+            newArr.push('(', 0-arr[i+2]);
+            i+=2;
+        }
+        //Minus Minus = Plus
         else if(((i > 0) && (arr[i] === '-') && (arr[i+1] === '-'))){
             newArr.push('+');
             i++;
         }
+        //negaives Vorzeichen vor Klammer --> -(
         else if((i > 0) && arr[i] === '-' && arr[i+1] === '('){
             newArr.push('-','(');
             i++;
         }
+        //negative Zahl --> *-4
         else if((i > 0) && arr[i].indexOf(validOp) && (arr[i+1] === '-')){
-            newArr.push(0-arr[i]);
-            i++;
+            newArr.push(arr[i], 0-arr[i+2]);
+            i+=2;
         }
 
         else{
