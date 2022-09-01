@@ -96,7 +96,7 @@ function splitTerm(str){
     return newArr.map( x => parseInt(x) ? parseFloat(x) : x);
 }
 
-
+// sendet Input an Funktionen und schreibt Ergebnis in Input
 function subm(){
     event.preventDefault();
     let inputField = document.getElementById('equation');
