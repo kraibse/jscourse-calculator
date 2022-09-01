@@ -15,40 +15,40 @@
 </head>
 <body>
     
-    <form id="calculator" onSubmit="" class="mx-auto w-75">
+    <form id="calculator"  onsubmit="subm()" class="mx-auto w-75">
         <h1 class="d-flex justify-content-around m-4">JS Course - Calculator</h1>
         
         <!-- results history -->
         <div class="border mb-4">
             <div class="w-100 shadow-sm" id="results"></div>
-            <input type="text" id="equation" class="w-100 px-2 py-1 shadow-sm" placeholder="42">
+            <input type="text" id="equation" class="w-100 px-2 py-1 shadow-sm" placeholder="0">
         </div>
 
         <!-- container for the buttons (table style) -->
         <div class="container">
             <div class="row">
-                <button class="col-sm">1</button>
-                <button class="col-sm">2</button>
-                <button class="col-sm">3</button>
-                <button class="col-sm">+</button>
+                <button type="button" class="col-sm" onclick="document.forms['calculator']['equation'].value += '1'">1</button>
+                <button type="button" class="col-sm" onclick="document.forms['calculator']['equation'].value += '2'">2</button>
+                <button type="button" class="col-sm" onclick="document.forms['calculator']['equation'].value += '3'">3</button>
+                <button type="button" class="col-sm" onclick="document.forms['calculator']['equation'].value += '+'">+</button>
             </div>
             <div class="row">
-                <button class="col-sm">4</button>
-                <button class="col-sm">5</button>
-                <button class="col-sm">6</button>
-                <button class="col-sm">-</button>
+                <button type="button" class="col-sm" onclick="document.forms['calculator']['equation'].value += '4'">4</button>
+                <button type="button" class="col-sm" onclick="document.forms['calculator']['equation'].value += '5'">5</button>
+                <button type="button" class="col-sm" onclick="document.forms['calculator']['equation'].value += '6'">6</button>
+                <button type="button" class="col-sm" onclick="document.forms['calculator']['equation'].value += '-'">-</button>
             </div>
             <div class="row">
-                <button class="col-sm">7</button>
-                <button class="col-sm">8</button>
-                <button class="col-sm">9</button>
-                <button class="col-sm">/</button>
+                <button type="button" class="col-sm" onclick="document.forms['calculator']['equation'].value += '7'">7</button>
+                <button type="button" class="col-sm" onclick="document.forms['calculator']['equation'].value += '8'">8</button>
+                <button type="button" class="col-sm" onclick="document.forms['calculator']['equation'].value += '9'">9</button>
+                <button type="button" class="col-sm" onclick="document.forms['calculator']['equation'].value += '/'">/</button>
             </div>
             <div class="row">
-                <button class="col-sm">Clear</button>
-                <button class="col-sm">0</button>
-                <button class="col-sm">.</button>
-                <button class="col-sm">*</button>
+                <button type="button" class="col-sm" onclick="document.forms['calculator']['equation'].value = ''">clear</button>
+                <button type="button" class="col-sm" onclick="document.forms['calculator']['equation'].value += '0'">0</button>
+                <button type="button" class="col-sm" onclick="document.forms['calculator']['equation'].value += '.'">.</button>
+                <button type="button" class="col-sm" onclick="document.forms['calculator']['equation'].value += '*'">*</button>
             </div>
             <div class="row">
                 <button type="submit" class="bg-primary text-light" id="calculateButton">Calculate</button>

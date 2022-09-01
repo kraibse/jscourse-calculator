@@ -56,6 +56,7 @@ function divide (a, b) {
 }
 
 // String wird rechenbar gemacht
+// str -> arr
 function splitTerm(str){
 
     let validOp = '+-/*'; //['+', '-', '/', '*'];
@@ -71,15 +72,15 @@ function splitTerm(str){
             newArr.push(0-arr[1]);
             i++;
         }
-        else if(((i > 0) && (arr[i+1] === '-') && (arr[i] === '-'))){
+        else if(((i > 0) && (arr[i] === '-') && (arr[i+1] === '-'))){
             newArr.push('+');
             i++;
         }
-        else if((i > 0) && arr[i+1] === '(' && arr[i] === '-'){
+        else if((i > 0) && arr[i] === '-' && arr[i+1] === '('){
             newArr.push('-','(');
             i++;
         }
-        else if((i > 0) && arr[i-1].indexOf(validOp) && (arr[i] === '-')){
+        else if((i > 0) && arr[i].indexOf(validOp) && (arr[i+1] === '-')){
             newArr.push(0-arr[i+1]);
             i++;
         }
@@ -95,6 +96,21 @@ function splitTerm(str){
     return newArr.map( x => parseInt(x) ? parseFloat(x) : x);
 }
 
+
+function subm(){
+    event.preventDefault();
+    let inputField = document.getElementById('equation');
+    let textStr = inputField.value;
+    let result = calculate(splitTerm(textStr));
+    console.log(result);
+    inputField.value = result;
+}
+
+
+
 //testing
-let str = '1.5-((4*-3.5)+(1*2))';
-console.log(calculate(splitTerm(str)));
+//let str = '1.5-((-4*-3.5)+(1*2))';
+//console.log(calculate(splitTerm(str)));
+
+
+
