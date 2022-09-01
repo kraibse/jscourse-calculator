@@ -81,7 +81,7 @@ function splitTerm(str){
             i++;
         }
         else if((i > 0) && arr[i].indexOf(validOp) && (arr[i+1] === '-')){
-            newArr.push(0-arr[i+1]);
+            newArr.push(0-arr[i]);
             i++;
         }
 
@@ -93,7 +93,7 @@ function splitTerm(str){
     console.log(newArr);
 
 
-    return newArr.map( x => parseInt(x) ? parseFloat(x) : x);
+    return newArr.map( x => parseFloat(x) ? parseFloat(x) : x);
 }
 
 // sendet Input an Funktionen und schreibt Ergebnis in Input
