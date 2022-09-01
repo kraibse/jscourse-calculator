@@ -18,11 +18,11 @@ function calculate (splitTerm) {
                 break;
 
             case '*':
-                erg = substract(erg, splitTerm[i+1]);
+                erg = multiply(erg, splitTerm[i+1]);
                 break;
 
             case '/':
-                erg = substract(erg, splitTerm[i+1]);
+                erg = divide(erg, splitTerm[i+1]);
                 break;
 
         }
@@ -101,7 +101,6 @@ function splitTerm(str){
 
     console.log(newArr);
 
-
     return newArr.map( x => parseFloat(x) ? parseFloat(x) : x);
 }
 
@@ -114,7 +113,7 @@ function subm(){
     let result = calculate(splitTerm(textStr));
     console.log(result);
     inputField.value = result;
-    history.appendChild(document.createElement('p')).textContent = result;
+    history.appendChild(document.createElement('p')).textContent = textStr + ' = ' +result;
     history.scrollTop = history.scrollHeight;
 }
 
