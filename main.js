@@ -3,20 +3,32 @@ function calculate (splitTerm) {
     
     console.log(splitTerm);
 
-    switch (splitTerm[1]){
+    let erg = splitTerm[0];
 
-        case '+':
-            return add(splitTerm[0], splitTerm[2]);
-            
-        case '-':
-            return substract(splitTerm[0], splitTerm[2]);
+    for(let i = 1; i <= splitTerm.length; i+=2){
 
-        case '*':
-            return multiply(splitTerm[0], splitTerm[2]);
+        switch (splitTerm[i]){
 
-        case '/':
-            return divide(splitTerm[0], splitTerm[2]);
+            case '+':
+                erg = add(erg, splitTerm[i+1]);
+                break;
+
+            case '-':
+                erg = substract(erg, splitTerm[i+1]);
+                break;
+
+            case '*':
+                erg = substract(erg, splitTerm[i+1]);
+                break;
+
+            case '/':
+                erg = substract(erg, splitTerm[i+1]);
+                break;
+
+        }
     }
+
+    return erg;
 }
 
 // Grundlegende Rechenfunktionen, gibt ggf. Divide by Zero Error als String aus.
