@@ -178,8 +178,8 @@ function calcLogic (splitTerm) {
     return calculate(mainArr);
 }
 //testing: Mal/Geteilt funktioniert, Klammersetzung muss noch gefixed werden
-testArray = [1, '*', 2, '+', '(', 3, '/', 3, ')'];
-document.body.innerHTML = calcLogic(testArray);
+//testArray = [1, '*', 2, '+', '(', 3, '/', 3, ')'];
+//document.body.innerHTML = calcLogic(testArray);
 
 //testing
 let str = '-4--3';
@@ -193,7 +193,7 @@ function subm() {
     let textStr = inputField.value;
 
     //hier wird gerechnet
-    let result = calculate(splitTerm(textStr));
+    let result = calcLogic(splitTerm(textStr));
     console.log(result);
     
     inputField.value = result;
