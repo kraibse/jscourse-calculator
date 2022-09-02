@@ -50,7 +50,7 @@ function multiply (a, b) {
 function divide (a, b) {
 
     if (b == 0) {
-        return "Chuck Norris kann durch Null teilen.";
+        return "Nur Chuck Norris kann durch Null teilen.";
     };
     return a / b;
 }
@@ -110,11 +110,6 @@ function subm() {
     let inputField = document.getElementById('equation');
     let history = document.getElementById('results');
     let textStr = inputField.value;
-
-
-    //inputfeld manipulieren
-    //leerzeichen rausgemacht
-
 
     //hier wird gerechnet
     let result = calculate(splitTerm(textStr));
