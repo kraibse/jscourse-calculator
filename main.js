@@ -105,12 +105,12 @@ function splitTerm(str){
 }
 
 
-function calcLogic (splitTerm) {
+function calcLogic (splitTerm) { 
 
     let mainArr = structuredClone(splitTerm);
 
-    // Iteriere durch alle Elemente zur Klammeraufloesung
-    for (let i = 0; i < mainArr.length; i++) {
+    // !!! Klammeraufloesung Rekursionen und Logik mueesen gefixt werden !!!
+    /*for (let i = 0; i < mainArr.length; i++) {
         
          // Berechnet die Rechenaufgabe in der Klammer.]]]
         if (mainArr[i] == '(') {
@@ -162,7 +162,7 @@ function calcLogic (splitTerm) {
             return calcLogic(splitArr); 
         };   
     };
-
+*/
     // 2. Iteration fuer mal und geteilt **TESTED**
     for (let i = 0; i < mainArr.length; i++) {
 
@@ -177,14 +177,14 @@ function calcLogic (splitTerm) {
     // 3. Berechnung der restlichen addition und substraktion
     return calculate(mainArr);
 }
-//testing: Mal/Geteilt funktioniert, Klammersetzung muss noch gefixed werden
+/*Testing: Mal/Geteilt funktioniert, Klammersetzung muss noch gefixed werden
 testArray = [1, '*', 2, '+', '(', 3, '/', 3, ')'];
 document.body.innerHTML = calcLogic(testArray);
 
 //testing
-let str = '-4--3';
-// console.log(calculate(splitTerm(str)));
-
+ let str = '-4--3';
+ console.log(calculate(splitTerm(str)));
+*/
 // sendet Input an Funktionen und schreibt Ergebnis in Input
 function subm() {
     event.preventDefault(); //veraltet aber funktioniert
