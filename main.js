@@ -104,6 +104,87 @@ function splitTerm(str){
     return newArr.map( x => parseFloat(x) ? parseFloat(x) : x);
 }
 
+
+function calcLogic (splitTerm) {
+
+    let mainArr = structuredClone(splitTerm);
+
+    // Iteriere durch alle Elemente zur Klammeraufloesung
+    for (let i = 0; i < mainArr.length; i++) {
+        
+         // Berechnet die Rechenaufgabe in der Klammer.]]]
+        if (mainArr[i] == '(') {
+
+            // Erstellt Sekundaeres Array **Tested**
+            let splitArr = structuredClone(mainArr);
+
+            // Loescht bis zur Klammer den Inhalt des Array **Tested**
+            for (let j = 0; j < (i + 1); j++) {
+                splitArr.shift();
+            };
+
+            //Rekursiver Aufruf und Speicherung **Tested**
+            let result = [calcLogic(splitArr)];
+
+            //Zwischenspeichern des Teils vor der Klammer **Tested**
+            let ersterTeil = [];
+            for (let j = 0; j < (mainArr.length); j++) {
+
+                if (mainArr[j] == '(' && j == 0){
+                    break;
+                } else if (mainArr[j] == '(') {
+                    ersterTeil = mainArr.splice(0, j);
+                    break;
+                };
+            };
+
+            //Zwischenspeichern des Teils nach der Klammer **TESTED**
+            let zweiterTeil = [];
+            for (let j = (mainArr.length - 1); j >= 0; j--){
+
+                if (mainArr[j] == ')' && j == (mainArr.length - 1)){
+                    break;
+                } else if (mainArr[j] == ')') {
+                    zweiterTeil = mainArr.splice((j+1), mainArr.length);
+                    break;
+                };
+            };
+            // Ersetzt Ergebnis im urspruenglichen Array **TESTED**
+            mainArr = ersterTeil.concat(result.concat(zweiterTeil));
+            // Rekursiver Aufruf des Arrays ein Index nach gefundener oeffnender Klammer 
+
+            // Gibt Inhalt in der Klammer in rek. Aufruf **TESTED** 
+        } else if (mainArr[i] == ')') { 
+
+            let splitArr = structuredClone(mainArr);
+            splitArr = splitArr.slice(0, i); 
+
+            return calcLogic(splitArr); 
+        };   
+    };
+
+    // 2. Iteration fuer mal und geteilt **TESTED**
+    for (let i = 0; i < mainArr.length; i++) {
+
+        if (mainArr[i] == '*' || mainArr[i] == '/') {
+
+            mainArr[i+1] = calculate([mainArr[i-1], mainArr[i], mainArr[i+1]]);
+            mainArr[i] = '+';
+            mainArr[i-1] = 0;
+        };
+    };
+
+    // 3. Berechnung der restlichen addition und substraktion
+    return calculate(mainArr);
+}
+//testing: Mal/Geteilt funktioniert, Klammersetzung muss noch gefixed werden
+testArray = [1, '*', 2, '+', '(', 3, '/', 3, ')'];
+document.body.innerHTML = calcLogic(testArray);
+
+//testing
+let str = '-4--3';
+// console.log(calculate(splitTerm(str)));
+
 // sendet Input an Funktionen und schreibt Ergebnis in Input
 function subm() {
     event.preventDefault(); //veraltet aber funktioniert
@@ -125,6 +206,7 @@ function subm() {
 //testing
 //let str = '1.5-((-4*-3.5)+(1*2))';
 //console.log(calculate(splitTerm(str)));
+
 
 
 
