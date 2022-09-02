@@ -97,53 +97,55 @@ function calcLogic (splitTerm) {
          // Berechnet die Rechenaufgabe in der Klammer.]]]
         if (mainArr[i] == '(') {
 
+            // Erstellt Sekundaeres Array **Tested**
             let splitArr = structuredClone(mainArr);
 
+            // Loescht bis zur Klammer den Inhalt des Array **Tested**
             for (let j = 0; j < (i + 1); j++) {
                 splitArr.shift();
             };
 
-            //Ergebnis des rekursiven Aufrufs
-            let result = calcLogic(splitArr);
+            //Rekursiver Aufruf und Speicherung **Tested**
+            let result = [calcLogic(splitArr)];
 
-            //Zwischenspeichern des Teils vor der Klammer
+            //Zwischenspeichern des Teils vor der Klammer **Tested**
             let ersterTeil = [];
             for (let j = 0; j < (mainArr.length); j++) {
 
-                if (mainArr[j] == '(' || j == 0){
+                if (mainArr[j] == '(' && j == 0){
                     break;
                 } else if (mainArr[j] == '(') {
-                    ersterTeil = mainArr.splice[0, j];
+                    ersterTeil = mainArr.splice(0, j);
                     break;
                 };
             };
 
-            //Zwischenspeichern des Teils nach der Klammer
+            //Zwischenspeichern des Teils nach der Klammer **TESTED**
             let zweiterTeil = [];
             for (let j = (mainArr.length - 1); j >= 0; j--){
-                if (mainArr[j] == ')' || j == (mainArr.length - 1)){
+
+                if (mainArr[j] == ')' && j == (mainArr.length - 1)){
                     break;
-                } else if (mainArr[j] == '(') {
-                    zweiterTeil = mainArr.splice[(j+1), mainArr.lenght];
+                } else if (mainArr[j] == ')') {
+                    zweiterTeil = mainArr.splice((j+1), mainArr.length);
                     break;
                 };
             };
-            // Ersetzt Ergebnis im urspruenglichen Array
+            // Ersetzt Ergebnis im urspruenglichen Array **TESTED**
             mainArr = ersterTeil.concat(result.concat(zweiterTeil));
             // Rekursiver Aufruf des Arrays ein Index nach gefundener oeffnender Klammer 
 
-        } else if (mainArr[i] == ')') {
+            // Gibt Inhalt in der Klammer in rek. Aufruf **TESTED** 
+        } else if (mainArr[i] == ')') { 
 
             let splitArr = structuredClone(mainArr);
-        
-            for (let k = (splitArr.length - 1); k > (i - 1); k--) {
-                splitArr.pop();
-            };
-            return calcLogic(splitArr);
+            splitArr = splitArr.slice(0, i); 
+
+            return calcLogic(splitArr); 
         };   
     };
 
-    // 2. Iteration fuer mal und geteilt
+    // 2. Iteration fuer mal und geteilt **TESTED**
     for (let i = 0; i < mainArr.length; i++) {
 
         if (mainArr[i] == '*' || mainArr[i] == '/') {
