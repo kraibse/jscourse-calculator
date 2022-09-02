@@ -1,4 +1,30 @@
+input[type=text] {
+    font-family: 'Roboto Mono', monospace;
+    border: none;
+}
 
+table {
+    table-layout: fixed;
+    width: auto;
+}
+
+td {
+    width: 100%;
+    direction: ltr;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+#calculateButton {
+    border-radius: 0.35em;
+}
+
+#calculateButton:hover {
+    /* transform: scale(1.02); */
+    text-decoration: underline;
+    box-shadow: 0px 2px 5px 0px #00f;
+}
 
 #calculator button {
     border: none;
@@ -12,21 +38,7 @@
     /* transform: scale(1.1); */
 }
 
-#calculateButton {
-    border-radius: 0.35em;
-}
-
-#calculateButton:hover {
-    /* transform: scale(1.02); */
-    text-decoration: underline;
-    box-shadow: 0px 2px 5px 0px #00f;
-}
-
 #results {
     height: 120px;
     background-color: #93aee861;
-}
-
-input[type=text] {
-    border: none;
 }
