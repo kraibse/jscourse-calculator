@@ -7,15 +7,15 @@
     
     <link rel="stylesheet" href="calculator.css">
 
-
+    
     <!-- CSS only -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
-
+    
     <title>Calculator - JS Course</title>
 </head>
 <body>
     
-    <form id="calculator" onSubmit="" class="mx-auto w-75">
+    <form id="calculator" onSubmit="checkSyntax();" class="mx-auto w-75">
         <h1 class="d-flex justify-content-around m-4">JS Course - Calculator</h1>
         
         <!-- results history -->
@@ -54,18 +54,30 @@
                 <button type="submit" class="bg-primary text-light" id="calculateButton">Calculate</button>
             </div>
         </div>
-    </form>
+    
+    <p id="validationResult" class="m-3 d-flex justify-content-around error">Check your syntax at position: <strong id="errorIndex">0</strong></p>
+    
+    <table class="my-4">
+        <thead class="">
+            <th>Error Message</td>
+            <th>Additional Information</td>
+        </thead>
 
-    <div class="my-3" align="center" id="errorBox">
-        <p class="">Die Eingabe enthält Fehler bei Position: <strong id="errorIndex">0</strong></p>
-        <ul class="text-danger">
-            <!-- Ungültige Zeichen -->
-            <li class="text-danger">Ungültige Zeichen!</li>
-            <!-- Ungültige Operatorenkette -->
-            <li class="text-danger">Ungültige Operatorenketten!</li>
-        </ul>
-    </div>
 
+        <!-- Ungültige Zeichen -->
+        <tr id="invalidCharactersRow">
+            <td class="text-danger">Only include the valid characters from above!</td>
+            <td class="" id="invalidCharactersInformation">0</td>
+        </tr>
+        
+        <!-- Ungültige Operatorenkette -->
+        <tr id="invalidOperatorsRow">
+            <td class="text-danger">Combination of operators is not allowed!</td>
+            <td>
+                <p id="invalidOperatorsInformation">0</p>
+            </td>
+        </tr>
+    </table>
 
     <!-- JavaScript Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
