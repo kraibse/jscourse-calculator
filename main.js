@@ -103,36 +103,43 @@ function calcLogic (splitTerm) {
                 splitArr.shift();
             };
 
+            //Ergebnis des rekursiven Aufrufs
             let result = calcLogic(splitArr);
 
-            //Zwischenspeichern des vorherigen Rechenarrays
+            //Zwischenspeichern des Teils vor der Klammer
             let ersterTeil = [];
-            for (let j = 0; j > mainArr.length; j++) {
+            for (let j = 0; j < (mainArr.length); j++) {
 
-                if (mainArr[j] == '(') {
+                if (mainArr[j] == '(' || j == 0){
+                    break;
+                } else if (mainArr[j] == '(') {
                     ersterTeil = mainArr.splice[0, j];
                     break;
                 };
             };
 
-            // Ersetzt Ergebnis im urspruenglichen Array
-            for (let j = 0; j < (i + 1); j++) {
-
-                if (mainArr[j] == ')') {
-                    mainArr[j] = result;
-                    mainArr = ersterTeil.concat(mainArr);
-                } else {
-                    splitArr.shift();
+            //Zwischenspeichern des Teils nach der Klammer
+            let zweiterTeil = [];
+            for (let j = (mainArr.length - 1); j >= 0; j--){
+                if (mainArr[j] == ')' || j == (mainArr.length - 1)){
+                    break;
+                } else if (mainArr[j] == '(') {
+                    zweiterTeil = mainArr.splice[(j+1), mainArr.lenght];
+                    break;
                 };
             };
+            // Ersetzt Ergebnis im urspruenglichen Array
+            mainArr = ersterTeil.concat(result.concat(zweiterTeil));
             // Rekursiver Aufruf des Arrays ein Index nach gefundener oeffnender Klammer 
+
         } else if (mainArr[i] == ')') {
 
             let splitArr = structuredClone(mainArr);
         
-            for (let j = splitArr.length; j > (i - 1); j--) {
+            for (let k = (splitArr.length - 1); k > (i - 1); k--) {
                 splitArr.pop();
             };
+            return calcLogic(splitArr);
         };   
     };
 
@@ -156,4 +163,4 @@ document.body.innerHTML = calcLogic(testArray);
 
 //testing
 let str = '-4--3';
-console.log(calculate(splitTerm(str)));
+// console.log(calculate(splitTerm(str)));
