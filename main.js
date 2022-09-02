@@ -5,9 +5,9 @@ function calculate (splitTerm) {
 
     let erg = splitTerm[0];
 
-    for(let i = 1; i <= splitTerm.length; i+=2){
+    for(let i = 1; i <= splitTerm.length; i+=2) {
 
-        switch (splitTerm[i]){
+        switch (splitTerm[i]) {
 
             case '+':
                 erg = add(erg, splitTerm[i+1]);
@@ -67,34 +67,34 @@ function splitTerm(str){
  
     let newArr = [];
 
-    for(let i = 0; i < arr.length; i++){
+    for(let i = 0; i < arr.length; i++) {
         //erstes Element negativ
-        if((i === 0) && (arr[i] === '-')){
+        if ( (i === 0) && (arr[i] === '-')) {
             newArr.push(0-arr[1]);
             i++;
         }
         //negativ nach Klammer
-        else if( arr[i] === '(' && arr[i+1] === '-'){
+        else if ( arr[i] === '(' && arr[i+1] === '-') {
             newArr.push('(', 0-arr[i+2]);
             i+=2;
         }
         //Minus Minus = Plus
-        else if(((i > 0) && (arr[i] === '-') && (arr[i+1] === '-'))){
+        else if ( (i > 0) && (arr[i] === '-') && (arr[i+1] === '-')) {
             newArr.push('+');
             i++;
         }
         //negaives Vorzeichen vor Klammer --> -(
-        else if((i > 0) && arr[i] === '-' && arr[i+1] === '('){
+        else if ( (i > 0) && arr[i] === '-' && arr[i+1] === '(') {
             newArr.push('-','(');
             i++;
         }
         //negative Zahl --> *-4
-        else if((i > 0) && arr[i].indexOf(validOp) && (arr[i+1] === '-')){
+        else if ( (i > 0) && arr[i].indexOf(validOp) && (arr[i+1] === '-')) {
             newArr.push(arr[i], 0-arr[i+2]);
             i+=2;
         }
 
-        else{
+        else {
             newArr.push(arr[i]);
         }
     }
@@ -105,11 +105,16 @@ function splitTerm(str){
 }
 
 // sendet Input an Funktionen und schreibt Ergebnis in Input
-function subm(){
-    event.preventDefault();
+function subm() {
+    event.preventDefault(); //veraltet aber funktioniert
     let inputField = document.getElementById('equation');
     let history = document.getElementById('results');
     let textStr = inputField.value;
+
+
+    //inputfeld manipulieren
+    //leerzeichen rausgemacht
+
 
     //hier wird gerechnet
     let result = calculate(splitTerm(textStr));
