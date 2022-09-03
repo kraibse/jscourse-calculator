@@ -101,7 +101,7 @@ function splitTerm(str){
 
     console.log(newArr);
 
-    return newArr.map( x => parseFloat(x) ? parseFloat(x) : x);
+    return newArr.map( x => parseFloat(x) ? Number(x) : x);
 }
 
 
@@ -195,8 +195,9 @@ function subm() {
     //hier wird gerechnet
     let result = calcLogic(splitTerm(textStr));
     console.log(result);
-    
-    inputField.value = result;
+    inputField.placeholder = result;
+    inputField.value = '';
+
     history.appendChild(document.createElement('p')).textContent = textStr + ' = ' +result;
     history.scrollTop = history.scrollHeight;
 }
